@@ -1,9 +1,9 @@
 # BROWNIAN-MOTION-STOCKS
-Implementation for Brownian Motion with Monte Carlo method to learn expected price for an input stock and timeframe.
+Implementation for Brownian Motion with Monte Carlo method to learn expected price for an input stock in a given timeframe.
 
 
 ## Examples
-An example of using _GOOG_ ticker
+An example of using _GOOG_ ticker.
 
 ![linr](examples/GOOG.png)
 
