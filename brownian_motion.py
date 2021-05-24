@@ -2,7 +2,7 @@
 
     *Brownian Motion + Monte Carlo learn expected stock's price from given input `symbol`, `start_date`, `end_date`.
     *Note that this method is not used to predict stock's price. This is for learning the uncertainty of the stock in given time frame only!
-    *Applied Standard Norm.
+    *Applied Gaussian noise to volatility.
 
     *FROM WIKIPEDIA: https://en.wikipedia.org/wiki/Geometric_Brownian_motion
     *Geometry Brownian Motion (GBM) is not a completely realistic model, in particular it falls short of reality in the following points:
