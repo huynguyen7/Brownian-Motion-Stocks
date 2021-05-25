@@ -76,13 +76,13 @@ def brownian_motion(price_history=None, days=10, num_trials=100):  # Monte Carlo
     volatility = standard_dev * Z  # Varying volatility based on normal distribution of log returns.
     daily_returns = np.exp(drift + volatility)
 
-    price_paths = np.zeros(daily_returns.shape)
-    price_paths[0] = price_history.iloc[-1]
+    prices = np.zeros(daily_returns.shape)
+    prices[0] = price_history.iloc[-1]
 
     for day in tqdm(range(1, days)):
-        price_paths[day] = price_paths[day-1]*daily_returns[day]
+        prices[day] = prices[day-1]*daily_returns[day]
     
-    return log_returns, price_paths
+    return log_returns, prices
 
 
 """ MAIN """
@@ -101,10 +101,10 @@ if __name__ == "__main__":
 
     print(f'--> SYMBOL: {symbol}')
     print(f'--> Running Brownian Motion from {start_date} to {end_date} with {num_trials} trials..')
-    log_returns, price_paths = brownian_motion(price_close_history, num_predicting_days, num_trials)
+    log_returns, prices = brownian_motion(price_close_history, num_predicting_days, num_trials)
 
     # Calculate expected price for prediction.
-    predicted_price = price_paths[num_predicting_days-1].mean()
+    predicted_price = prices[num_predicting_days-1].mean()
     print_latest_price(symbol)
     print('--> Expected Daily Returns: +- %.5f$' % log_returns.std())
     print('--> Expected Price after %d days from %s: %.2f$' % (num_predicting_days, end_date, predicted_price))
@@ -115,5 +115,5 @@ if __name__ == "__main__":
     # Visualize
     #visualize_stock_price(price_close_history, show=True)
     #visualize_log_returns(log_returns, show=True)
-    #visualize_brownian_motion(price_paths, show=True)
-    #visualize_predicted_prices(num_predicting_days, price_paths, show=True)
+    #visualize_brownian_motion(prices, show=True)
+    #visualize_predicted_prices(num_predicting_days, prices, show=True)
